@@ -1,15 +1,4 @@
-module headphone_strap()
-{
-	strapDepth = 30;
-	strapArkHeight = 170;
-	backboneThickness = 2.3;
-	absoluteThickness = 5.3;
-	
-	half_hollow_cylinder(h=strapDepth, r=strapArkHeight, 
-		thickness=backboneThickness, fn=100);
-	half_hollow_cylinder(h=strapDepth/2, r=strapArkHeight-backboneThickness, 
-		thickness=absoluteThickness-backboneThickness, fn=100);
-}
+// George Onoufriou 2018, hollowCylinders
 
 module hollow_cylinder(h=5, r=10, thickness=1, center=true, fn=200)
 {
@@ -26,5 +15,3 @@ module half_hollow_cylinder(h=5, r=10, thickness=1, center=true, fn=200)
 		translate([r/2,0,0]) cube([r+1,r*2+1,h+1], center=true);
 	}
 }
-
-headphone_strap();
