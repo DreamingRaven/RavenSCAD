@@ -3,8 +3,10 @@ module headphone_strap()
 	strapDepth = 30;
 	strapArkHeight = 170;
 	backboneThickness = 2.3;
+	absoluteThickness = 5.3;
 	
 	half_hollow_cylinder(h=strapDepth, r=strapArkHeight, thickness=backboneThickness, fn=100);
+	half_hollow_cylinder(h=strapDepth/2, r=strapArkHeight-backboneThickness, thickness=absoluteThickness-backboneThickness);
 }
 
 module hollow_cylinder(h=5, r=10, thickness=1, center=true, fn=200)
