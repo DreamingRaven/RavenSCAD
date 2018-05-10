@@ -29,11 +29,11 @@ module anchor(dim=[10,10,3], holeDiam=4.5){
 }
 
 length = 200;
-width = 60;
-height = 30;
+width = 20;
+height = 15;
 thickness = 3;
 
-anchorDim = [15, 20, 3];
+anchorDim = [10, 10, 3];
 screwHoleDiam = 2.5;
 
 3dHypot(l=length, w=width, h=height, thick=thickness
