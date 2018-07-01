@@ -16,7 +16,7 @@ module headphone_strap()
 	absoluteThickness = 5.3;
 	fn = 200;
   backboneArcAngle = 180-14;
-	secLayDipDepth = 4;
+	secLayDipDepth = 3;
 	secLayBackDepth = strapDepth - (secLayDipDepth * 2);
 	secLayBackThickness = 2;
 	secLayRadOut = strapArkHeight - backboneThickness;
@@ -42,7 +42,7 @@ module headphone_strap()
 			half_hollow_cylinder(h=thdLayBackDepth, r=thdLayRadOut,
 				thickness=thdLayBackThickness);
 		}
-		hollow_cylinder(h=15, r=secLayRadOut + 1,
+		hollow_cylinder(h=17.7, r=secLayRadOut + 1,
 			thickness=thdLayBackThickness + secLayBackThickness + 1);
     mirror([1,0,0]) arcH(r=thdLayRadOut-thdLayBackThickness-1, h=21,
       thick=thdLayBackThickness+secLayBackThickness+1, angle=155, center=true,
@@ -63,9 +63,32 @@ module headphone_strap()
 	}
 
   // add screw holes
-  hollow_cylinder(h=secLayBackThickness+thdLayBackThickness, r=2, thickness=1.1);
-}
+  centreCentreDist=13.5;
+  rotation=129;
 
-/* render(){ */
-  headphone_strap();
-/* } */
+  rotate([0,0,rotation])
+    translate([(-(secLayBackThickness+thdLayBackThickness)/2)
+      +strapArkHeight-backboneThickness+0.5,0,centreCentreDist/2])
+    rotate([0,90,0])
+    hollow_cylinder(h=secLayBackThickness+thdLayBackThickness, r=2, thickness=1.1);
+
+  mirror([0,1,0])
+  rotate([0,0,rotation])
+    translate([(-(secLayBackThickness+thdLayBackThickness)/2)
+      +strapArkHeight-backboneThickness+0.5,0,centreCentreDist/2])
+    rotate([0,90,0])
+    hollow_cylinder(h=secLayBackThickness+thdLayBackThickness, r=2, thickness=1.1);
+
+  rotate([0,0,rotation])
+    translate([(-(secLayBackThickness+thdLayBackThickness)/2)
+      +strapArkHeight-backboneThickness+0.5,0,-centreCentreDist/2])
+    rotate([0,90,0])
+    hollow_cylinder(h=secLayBackThickness+thdLayBackThickness, r=2, thickness=1.1);
+
+  mirror([0,1,0])
+  rotate([0,0,rotation])
+    translate([(-(secLayBackThickness+thdLayBackThickness)/2)
+      +strapArkHeight-backboneThickness+0.5,0,-centreCentreDist/2])
+    rotate([0,90,0])
+    hollow_cylinder(h=secLayBackThickness+thdLayBackThickness, r=2, thickness=1.1);
+}
