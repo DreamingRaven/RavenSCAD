@@ -9,23 +9,26 @@ module bentoBox(){
     thickness = 5;
     tolerance = 1;
     center =    true; // probs best not to fiddle with this
-    words = "Amy";
+    words = "George";
     letterSize = 50;
 
     boxBase(width, length, height, thickness, center);
     midBox(width, length, height, thickness, center);
     translate([0,0,height]){
-      embossedLid(width, length, height, thickness, center, words);
-    }
-    translate([0,0,3*(height/2)]){
-        thickLetters(words, thickness, letterSize);
+      embossedLid(width, length, height, thickness, center, words, letterSize);
     }
 };
 
 
 
-module embossedLid(width, length, height, thickness, center, words){
-    baseLid(width, length, height, thickness, center);
+module embossedLid(width, length, height, thickness, center, words, letterSize){
+    difference(){
+        baseLid(width, length, height, thickness, center);
+        translate([0,0,(height/2)-(thickness/2)]){
+            thickLetters(words, thickness, letterSize);
+        }
+    }
+
 }
 
 module thickLetters(words, height, size, font){
