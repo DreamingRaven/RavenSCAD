@@ -10,10 +10,40 @@ module bentoBox(){
     tolerance = 1;
     center =    true;
 
-    slantOpenCube(width, length, height, thickness, center);
-    squarePyramid(width, length, height, center);
-
+    midBox(width, length, height, thickness, center);
+    boxBase(width, length, height, thickness, center);
+    translate([0,0,height]){
+      baseLid(width, length, height, thickness, center);
+    }
 };
+
+module midBox(width, length, height, thickness, center){
+  union(){
+    translate([0,0,height]){
+      boxBase(width, length, height, thickness, center);
+    }
+    baseLid(width, length, height, thickness, center);
+  }
+}
+
+module boxBase(width, length, height, thickness, center){
+  difference(){
+    slantOpenCube(width, length, height, thickness, center);
+    baseLid(width, length, height, thickness, center);
+  }
+}
+
+module baseLid(width, length, height, thickness, center){
+  difference(){
+    rotate([0,180,0]){
+      squarePyramid(width, length, height, center);
+    }
+    translate([0,0,-thickness]){
+      cube([width, length, height], center);
+    }
+  }
+
+}
 
 module squarePyramid(w, l, h, center) {
     offset = [0,0,0];
