@@ -8,14 +8,33 @@ module bentoBox(){
     width =     200;
     thickness = 5;
     tolerance = 1;
-    center =    true;
+    center =    true; // probs best not to fiddle with this
+    words = "Amy";
+    letterSize = 50;
 
-    midBox(width, length, height, thickness, center);
     boxBase(width, length, height, thickness, center);
+    midBox(width, length, height, thickness, center);
     translate([0,0,height]){
-      baseLid(width, length, height, thickness, center);
+      embossedLid(width, length, height, thickness, center, words);
+    }
+    translate([0,0,3*(height/2)]){
+        thickLetters(words, thickness, letterSize);
     }
 };
+
+
+
+module embossedLid(width, length, height, thickness, center, words){
+    baseLid(width, length, height, thickness, center);
+}
+
+module thickLetters(words, height, size, font){
+    rotate([0,0,90]){
+        linear_extrude(height){
+            text(text=words, size=size, halign="center", valign="center");
+        }
+    }
+}
 
 module midBox(width, length, height, thickness, center){
   union(){
