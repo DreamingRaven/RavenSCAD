@@ -13,7 +13,10 @@ translate([0,0,underboard_thickness]){
   translate([-2.81,40.6,0]) cube([17.44,13.1,15.6]); // USB 2.0
   translate([27.36,1,0]) cube([50.7,5.0,8.6]); // GPIO pins
 
-  translate([27.36,1,0]) cube([9,7.4,3.2]); // GPIO pins
+  translate([69.5,50,0]) cube([9,7.4,3.2]); // USB type c power
+  translate([56.0,50,0]) cube([6.55,7.8,3.2]); // Micro HDMI0
+  translate([42.55,50,0]) cube([6.55,7.8,3.2]); // Micro HDMI1
+  translate([33,43.55,0]) cube([6.9,14.85,5.9]); // Audio jack
 
   translate([85,22.5,-board_thickness]) cube([2.55,11.02,1.0]); // SD card (poking out)
 
