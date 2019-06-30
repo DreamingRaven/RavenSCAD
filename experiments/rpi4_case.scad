@@ -1,4 +1,4 @@
-// Raspberry pi 4 model by George Onoufriou (Raven, GeorgeRaven, Archer) C 2019-06-30
+// Raspberry pi 4 model case by George Onoufriou (Raven, GeorgeRaven, Archer) C 2019-06-30
 // please see licence in project root https://github.com/DreamingRaven/RavenSCAD/blob/master/LICENSE
 
 board_thickness = 1.5; // the space for the board itself only
