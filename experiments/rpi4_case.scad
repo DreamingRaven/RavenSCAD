@@ -20,9 +20,13 @@ translate([0,0,underboard_thickness]){
 
   translate([85,22.5,-board_thickness]) cube([2.55,11.02,1.0]); // SD card (poking out)
 
-  translate([22.2,2,0]) translate([1.25,1.25,0]) cylinder(10,d=2.5, center=true); // hole top-r
-  translate([22.2,51.1,0]) translate([1.25,1.25,0]) cylinder(10,d=2.5, center=true); // holes bot-r
-  translate([80.2,2,0]) translate([1.25,1.25,0]) cylinder(10,d=2.5, center=true); // hole top-l
-  translate([80.2,51.1,0]) translate([1.25,1.25,0]) cylinder(10,d=2.5, center=true); // holes bot-l
+  translate([22.2,2,0]) translate([1.25,1.25,0]) cylinder(15,d=2.5, center=true); // hole top-r
+  translate([22.2,2,0]) translate([1.25,1.25,0]) cylinder(10,d=5.9, center=true); // hole top-r outer
+  translate([22.2,51.1,0]) translate([1.25,1.25,0]) cylinder(15,d=2.5, center=true); // holes bot-r
+  translate([22.2,51.1,0]) translate([1.25,1.25,0]) cylinder(10,d=5.9, center=true); // holes bot-r
+  translate([80.2,2,0]) translate([1.25,1.25,0]) cylinder(15,d=2.5, center=true); // hole top-l
+  translate([80.2,2,0]) translate([1.25,1.25,0]) cylinder(10,d=5.9, center=true); // hole top-l
+  translate([80.2,51.1,0]) translate([1.25,1.25,0]) cylinder(15,d=2.5, center=true); // holes bot-l
+  translate([80.2,51.1,0]) translate([1.25,1.25,0]) cylinder(10,d=5.9, center=true); // holes bot-l
 
 }
