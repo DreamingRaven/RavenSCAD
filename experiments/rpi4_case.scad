@@ -5,8 +5,9 @@ board_thickness = 1.5; // the space for the board itself only
 pin_space = 2.2; // the min space that the throughhole components require underneath
 $fn = 30; // how detailed the circular components are (holes + mounts), not super important
 extension = 20; // extension to lengths so case can be subtractiveley created
-inhibitionzone_height = 15; // creates an inhibition zone for surface components
+inhibitionzone_height = 12; // creates an inhibition zone for surface components
 mount_pin_height = 31; // this is the most awkward one of the set as it sets the mount point pin size
+case_thickness = 3;
 
 rpi4();
 pins(); // generating the pins themselves so the holes can be inhibited
@@ -50,7 +51,7 @@ module rpi4(){
 }
 
 module mounts(){
-  translate([1.25,1.25,(0.5*mount_pin_height)-(board_thickness+5)]){ // this is to move all the pins
+  translate([1.25,1.25,(0.5*mount_pin_height)-(board_thickness+case_thickness)]){ // this is to move all the pins
           translate([22.2,2,0]) cylinder(mount_pin_height,d=5.9, center=true);     // mount top-r
           translate([22.2,51.1,0]) cylinder(mount_pin_height,d=5.9, center=true);  // mount bot-r
           translate([80.2,2,0]) cylinder(mount_pin_height,d=5.9, center=true);     // mount top-l
@@ -59,7 +60,7 @@ module mounts(){
 }
 
 module pins(){
-  translate([1.25,1.25,(0.5*mount_pin_height)-(board_thickness+5)]){ // this is to move all the pins
+  translate([1.25,1.25,(0.5*mount_pin_height)-(board_thickness+case_thickness)]){ // this is to move all the pins
     translate([22.2,2,0]) cylinder(mount_pin_height,d=2.5, center=true);     // hole  top-r
     translate([22.2,51.1,0]) cylinder(mount_pin_height,d=2.5, center=true);  // hole  bot-r
     translate([80.2,2,0]) cylinder(mount_pin_height,d=2.5, center=true);     // hole  top-l
