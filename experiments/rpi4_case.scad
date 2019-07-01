@@ -8,6 +8,9 @@ extension = 20; // extension to lengths so case can be subtractiveley created
 inhibitionzone_height = 14; // creates an inhibition zone for surface components
 mount_pin_height = 31; // this is the most awkward one of the set as it sets the mount point pin size
 case_thickness = 3;
+pil = 85; // this is the length of the pi board only
+pid = 56.4; // this is the width / depth of the pi board only
+pih = board_thickness;
 
 difference(){
 
