@@ -5,12 +5,19 @@ board_thickness = 1.5; // the space for the board itself only
 pin_space = 2.2; // the min space that the throughhole components require underneath
 $fn = 30; // how detailed the circular components are (holes + mounts), not super important
 extension = 20; // extension to lengths so case can be subtractiveley created
-inhibitionzone_height = 12; // creates an inhibition zone for surface components
+inhibitionzone_height = 14; // creates an inhibition zone for surface components
 mount_pin_height = 31; // this is the most awkward one of the set as it sets the mount point pin size
 case_thickness = 3;
 
-rpi4();
-pins(); // generating the pins themselves so the holes can be inhibited
+difference(){
+
+  translate([-case_thickness,-case_thickness,-(board_thickness + case_thickness)])
+    cube([85+2*case_thickness,56.4+2*case_thickness,inhibitionzone_height+board_thickness+2*case_thickness]); // the case itself
+  union(){
+      rpi4();
+      pins(); // generating the pins themselves so the holes can be inhibited
+  }
+}
 /* mounts(); */
 
 module rpi4(){
