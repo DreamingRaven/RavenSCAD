@@ -12,7 +12,7 @@ pil = 85; // this is the length of the pi board only
 pid = 56.4; // this is the width / depth of the pi board only
 pih = board_thickness;
 
- !translate([0,0,inhibitionzone_height + case_thickness]) rotate([0,180,0]) intersection(){ // top of case
+ translate([0,0,inhibitionzone_height + case_thickness]) rotate([0,180,0]) intersection(){ // top of case
   rpi4_case();
   translate([0,0,0]) cube([pil+case_thickness,pid,inhibitionzone_height+case_thickness]);  // test hull
 }
