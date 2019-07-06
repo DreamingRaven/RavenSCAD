@@ -7,21 +7,32 @@ $fn = 30; // how detailed the circular components are (holes + mounts), not supe
 extension = 20; // extension to lengths so case can be subtractiveley created
 inhibitionzone_height = 14; // creates an inhibition zone for surface components
 mount_pin_height = 31; // this is the most awkward one of the set as it sets the mount point pin size
-case_thickness = 3;
+case_thickness = 2; // sets the case thickness
 pil = 85; // this is the length of the pi board only
 pid = 56.4; // this is the width / depth of the pi board only
 pih = board_thickness;
 
-difference(){
+ !translate([0,0,inhibitionzone_height + case_thickness]) rotate([0,180,0]) intersection(){ // top of case
+  rpi4_case();
+  translate([0,0,0]) cube([pil+case_thickness,pid,inhibitionzone_height+case_thickness]);  // test hull
+}
 
-  translate([-case_thickness,-case_thickness,-(board_thickness + case_thickness)])
-    cube([85+2*case_thickness,56.4+2*case_thickness,inhibitionzone_height+board_thickness+2*case_thickness]); // the case itself
-  union(){
+ translate([30,0,case_thickness]) rotate([0,-90,0]) difference(){ // bottom of case
+  rpi4_case();
+  translate([0,0,0]) cube([pil+case_thickness,pid,inhibitionzone_height+case_thickness]);  // test hull
+}
+
+module rpi4_case()
+{
+  difference(){ // subtracts the rpi4 model from a cube to generate the case
+    translate([-case_thickness,-case_thickness,-(board_thickness + case_thickness)])
+    cube([85+(2*case_thickness),56.4+(2*case_thickness),inhibitionzone_height+board_thickness+(2*case_thickness)]); // the case itself
+    union(){
       rpi4();
       pins(); // generating the pins themselves so the holes can be inhibited
+    }
   }
 }
-/* mounts(); */
 
 module rpi4(){
 
