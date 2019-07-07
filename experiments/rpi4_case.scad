@@ -15,18 +15,21 @@ sd_height = 10; // is how tall the sd card part sticking out is so if you increa
 
  translate([0,0,inhibitionzone_height + case_thickness+pin_space]) rotate([0,180,0]) intersection(){ // top of case
   rpi4_case();
-  translate([0,0,0]) cube([pil+case_thickness,pid,pin_space+inhibitionzone_height+case_thickness]);  // test hull
+  topSelector();
 }
 
  translate([30,0,case_thickness]) rotate([0,-90,0]) difference(){ // bottom of case
   rpi4_case();
-  translate([0,0,0]) cube([pil+case_thickness,pid,pin_space+inhibitionzone_height+case_thickness]);  // test hull
+  topSelector();
 }
-
-
 
 translate([-pil,pid+case_thickness*2+5,0]) rpi4_case();
 translate([extension+17.44,pid+case_thickness*2+5,0]) rpi4();
+
+module topSelector()
+{
+  translate([-case_thickness,0,0]) cube([pil+2*case_thickness,pid,pin_space+inhibitionzone_height+case_thickness]);  // test hull
+}
 
 
 module rpi4_case()
