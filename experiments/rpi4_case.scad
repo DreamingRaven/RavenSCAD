@@ -5,30 +5,37 @@ board_thickness = 1.5; // the space for the board itself only
 pin_space = 2.2; // the min space that the throughhole components require underneath
 $fn = 30; // how detailed the circular components are (holes + mounts), not super important
 extension = 20; // extension to lengths so case can be subtractiveley created
-inhibitionzone_height = 14; // creates an inhibition zone for surface components
+inhibitionzone_height = 7; // creates an inhibition zone for surface components
 mount_pin_height = 31; // this is the most awkward one of the set as it sets the mount point pin size
 case_thickness = 3; // sets the case thickness
 pil = 85; // this is the length of the pi board only
 pid = 56.4; // this is the width / depth of the pi board only
 pih = board_thickness;
+sd_height = 10; // is how tall the sd card part sticking out is so if you increase it will cut more out for case
 
  translate([0,0,inhibitionzone_height + case_thickness]) rotate([0,180,0]) intersection(){ // top of case
   rpi4_case();
-  translate([0,0,0]) cube([pil+case_thickness,pid,inhibitionzone_height+case_thickness]);  // test hull
+  translate([0,0,0]) cube([pil+case_thickness,pid,pin_space+inhibitionzone_height+case_thickness]);  // test hull
 }
 
  translate([30,0,case_thickness]) rotate([0,-90,0]) difference(){ // bottom of case
   rpi4_case();
-  translate([0,0,0]) cube([pil+case_thickness,pid,inhibitionzone_height+case_thickness]);  // test hull
+  translate([0,0,0]) cube([pil+case_thickness,pid,pin_space+inhibitionzone_height+case_thickness]);  // test hull
 }
 
-/* !rpi4_case(); */
+
+
+translate([-pil,pid+case_thickness*2+5,0]) rpi4_case();
+translate([extension+17.44,pid+case_thickness*2+5,0]) rpi4();
+
 
 module rpi4_case()
 {
   difference(){ // subtracts the rpi4 model from a cube to generate the case
     translate([-case_thickness,-case_thickness,-(board_thickness + case_thickness)])
-    cube([pil+(2*case_thickness),pid+(2*case_thickness),inhibitionzone_height+board_thickness+(2*case_thickness)]); // the case itself
+    cube([pil+(2*case_thickness),
+      pid+(2*case_thickness),
+      pin_space+inhibitionzone_height+board_thickness+(2*case_thickness)]); // the case itself
     union(){
       rpi4();
       pins(); // generating the pins themselves so the holes can be inhibited
@@ -58,7 +65,7 @@ module rpi4(){
       translate([42.9,50,0]) cube([6.55,7.8+extension,3.2]);                    // Micro HDMI1
       translate([37.4,34.1,0]) cube([2.5,22.15,5.4+extension]);                 // CSI camera connector
       translate([27.4,43.55,0]) cube([6.9,14.85+extension,5.9]);                // Audio jack
-      translate([85,22.5,-board_thickness]) cube([2.55+extension,11.02,1.0]); // SD card (poking out)
+      translate([85,22.5,-(board_thickness+sd_height)]) cube([2.55+extension,11.02,sd_height]); // SD card (poking out)
 
       difference(){ // this creates the mount points around the mount holes esp the underneath ones
         union(){
