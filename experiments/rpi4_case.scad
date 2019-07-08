@@ -28,7 +28,10 @@ translate([extension+17.44,pid+case_thickness*2+5,0]) rpi4();
 
 module topSelector()
 {
-  translate([-case_thickness,0,0]) cube([pil+2*case_thickness,pid,pin_space+inhibitionzone_height+case_thickness]);  // test hull
+  difference(){ // this difference selects the top and bottom parts of the case with a small lip for the IO
+    translate([-case_thickness,0,0]) cube([pil+2*case_thickness,pid,pin_space+inhibitionzone_height+case_thickness]);  // test hull
+    translate([-case_thickness,0,0]) cube([case_thickness,pid,board_thickness]);
+  }
 }
 
 
