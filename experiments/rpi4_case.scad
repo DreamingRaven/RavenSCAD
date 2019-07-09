@@ -66,11 +66,11 @@ module rpi4(){
       translate([48.0,16.3,0]) cube([15.0,15.0,2.5]);                           // cpu
       translate([67.5,6.8,0]) cube([10.8,13.1,1.8]);                            // onboard wifi
       translate([79,17.3,0]) cube([2.5,22.15,5.4+extension]);                   // display connector
-      translate([69.5,50,0]) cube([9,7.4+extension,3.2]);                       // USB type c power
-      translate([56.0,50,0]) cube([6.55,7.8+extension,3.2]);                    // Micro HDMI0
-      translate([42.9,50,0]) cube([6.55,7.8+extension,3.2]);                    // Micro HDMI1
+      translate([69.6,50,0]) cube([9.2,7.4+extension,3.4]);                       // USB type c power
+      translate([56.0,50,0]) cube([6.85,7.8+extension,3.4]);                    // Micro HDMI0
+      translate([42.2,50,0]) cube([6.85,7.8+extension,3.4]);                    // Micro HDMI1
       translate([37.4,34.1,0]) cube([2.5,22.15,5.4+extension]);                 // CSI camera connector
-      translate([27.4,43.55,0]) cube([6.9,14.85+extension,5.9]);                // Audio jack
+      translate([26.9,43.55,0]) cube([7,14.95+extension,5.9]);                // Audio jack
       translate([85,22.4,-(board_thickness+sd_height)]) cube([2.55+extension,11.11,sd_height]); // SD card (poking out)
 
       difference(){ // this creates the mount points around the mount holes esp the underneath ones
