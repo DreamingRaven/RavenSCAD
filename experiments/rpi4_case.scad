@@ -55,7 +55,7 @@ module rpi4(){
     translate([0,0,board_thickness]){ // two translations cancel out but make maths simpler before they do
       translate([0,0,-(board_thickness)]) // the translation which ^ cancels out
       {
-        cube([85,56.4,board_thickness]); // board + underpins
+        cube([pil,pid,board_thickness]); // board + underpins
       }
       // these are the big surface level components
       translate([-(2.81+extension),2.15,0]) cube([21.3+extension,16.3,13.6]);   // Ethenrnet port
@@ -75,8 +75,8 @@ module rpi4(){
 
       difference(){ // this creates the mount points around the mount holes esp the underneath ones
         union(){
-          translate([0,0,0]) cube([85,56.4,inhibitionzone_height]);                           // cpu
-          translate([0,0,-(2*board_thickness)]) cube([85,56.4,pin_space]); // underpins only
+          translate([0,0,0]) cube([pil,pid,inhibitionzone_height]);                           // cpu
+          translate([0,0,-(2*board_thickness)]) cube([pil,pid,pin_space]); // underpins only
         }
         mounts();
       }
