@@ -58,7 +58,7 @@ module rpi4(){
         cube([85,56.4,board_thickness]); // board + underpins
       }
       // these are the big surface level components
-      translate([-(2.81+extension),2.15,0]) cube([21.3+extension,16.3,13.6]);     // Ethenrnet port
+      translate([-(2.81+extension),2.15,0]) cube([21.3+extension,16.3,13.6]);   // Ethenrnet port
       translate([-(2.81+extension),22.6,0]) cube([17.44+extension,13.5,15.6]);  // USB 3.0
       translate([-(2.81+extension),40.6,0]) cube([17.44+extension,13.5,15.6]);  // USB 2.0
       translate([27.36,1,0]) cube([50.7,5.0,8.6+extension]);                    // GPIO pins
@@ -66,11 +66,11 @@ module rpi4(){
       translate([48.0,16.3,0]) cube([15.0,15.0,2.5]);                           // cpu
       translate([67.5,6.8,0]) cube([10.8,13.1,1.8]);                            // onboard wifi
       translate([79,17.3,0]) cube([2.5,22.15,5.4+extension]);                   // display connector
-      translate([69.6,50,0]) cube([9.2,7.4+extension,3.4]);                       // USB type c power
-      translate([56.0,50,0]) cube([6.85,7.8+extension,3.4]);                    // Micro HDMI0
-      translate([42.2,50,0]) cube([6.85,7.8+extension,3.4]);                    // Micro HDMI1
+      translate([69.1,50,0]) cube([9.2,7.4+extension,3.4]);                     // USB type c power
+      translate([55.0,50,0]) cube([6.95,7.8+extension,3.4]);                    // Micro HDMI0
+      translate([41.2,50,0]) cube([6.95,7.8+extension,3.4]);                    // Micro HDMI1
       translate([37.4,34.1,0]) cube([2.5,22.15,5.4+extension]);                 // CSI camera connector
-      translate([26.9,43.55,0]) cube([7,14.95+extension,5.9]);                // Audio jack
+      translate([26.9,43.55,0]) cube([9,14.95+extension,6.9]);                  // Audio jack
       translate([85,22.4,-(board_thickness+sd_height)]) cube([2.55+extension,11.11,sd_height]); // SD card (poking out)
 
       difference(){ // this creates the mount points around the mount holes esp the underneath ones
