@@ -8,8 +8,8 @@ extension = 20; // extension to lengths so case can be subtractiveley created
 inhibitionzone_height = 12; // creates an inhibition zone for surface components
 mount_pin_height = 31; // this is the most awkward one of the set as it sets the mount point pin size
 case_thickness = 2; // sets the case thickness
-pil = 85; // this is the length of the pi board only
-pid = 56.4; // this is the width / depth of the pi board only
+pil = 86; // this is the length of the pi board only
+pid = 57.4; // this is the width / depth of the pi board only
 pih = board_thickness;
 sd_height = 10; // is how tall the sd card part sticking out is so if you increase it will cut more out for case
 
@@ -66,11 +66,11 @@ module rpi4(){
       translate([48.0,16.3,0]) cube([15.0,15.0,2.5]);                           // cpu
       translate([67.5,6.8,0]) cube([10.8,13.1,1.8]);                            // onboard wifi
       translate([79,17.3,0]) cube([2.5,22.15,5.4+extension]);                   // display connector
-      translate([69.1,50,0]) cube([9.2,7.4+extension,3.4]);                     // USB type c power
-      translate([55.0,50,0]) cube([6.95,7.8+extension,3.4]);                    // Micro HDMI0
-      translate([41.2,50,0]) cube([6.95,7.8+extension,3.4]);                    // Micro HDMI1
+      translate([69.1,50,0]) cube([9.7,7.4+extension,3.6]);                     // USB type c power
+      translate([55.0,50,0]) cube([7.95,7.8+extension,3.9]);                    // Micro HDMI0
+      translate([41.2,50,0]) cube([7.95,7.8+extension,3.9]);                    // Micro HDMI1
       translate([37.4,34.1,0]) cube([2.5,22.15,5.4+extension]);                 // CSI camera connector
-      translate([26.9,43.55,0]) cube([9,14.95+extension,6.9]);                  // Audio jack
+      translate([26.9,43.55,0]) cube([9,14.95+extension,7.9]);                  // Audio jack
       translate([85,22.4,-(board_thickness+sd_height)]) cube([2.55+extension,11.11,sd_height]); // SD card (poking out)
 
       difference(){ // this creates the mount points around the mount holes esp the underneath ones
