@@ -82,6 +82,7 @@ module rpi4(){
       translate([fan_position_x,fan_position_y+fan_length,0]) cylinder(extension,d=fan_pin_diam, center=false);                 // fan mount bot-r
       translate([fan_position_x+fan_length,fan_position_y,0]) cylinder(extension,d=fan_pin_diam, center=false);                 // fan mount top-l
       translate([fan_position_x+fan_length,fan_position_y+fan_length,0]) cylinder(extension,d=fan_pin_diam, center=false);      // fan mount bot-l
+      translate([fan_position_x+0.5*fan_length,fan_position_y+0.5*fan_length,0]) cylinder(extension,d=fan_length-fan_pin_diam, center=false);      // fan air hole
 
       difference(){ // this creates the mount points around the mount holes esp the underneath ones
         union(){
