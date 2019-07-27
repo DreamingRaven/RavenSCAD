@@ -2,8 +2,8 @@
 // please see licence in project root https://github.com/DreamingRaven/RavenSCAD/blob/master/LICENSE
 
 board_thickness = 1.5; // the space for the board itself only
-pin_space = 2.2; // the min space that the throughhole components require underneath
-$fn = 30; // how detailed the circular components are (holes + mounts), not super important
+pin_space = 2.2;//2.2; // the min space that the throughhole components require underneath
+$fn = 100; // how detailed the circular components are (holes + mounts), not super important
 extension = 20; // extension to lengths so case can be subtractiveley created
 inhibitionzone_height = 12; // creates an inhibition zone for surface components
 mount_pin_height = 31; // this is the most awkward one of the set as it sets the mount point pin size
