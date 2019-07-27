@@ -8,12 +8,12 @@ extension = 20; // extension to lengths so case can be subtractiveley created
 inhibitionzone_height = 12; // creates an inhibition zone for surface components
 mount_pin_height = 31; // this is the most awkward one of the set as it sets the mount point pin size
 case_thickness = 2; // sets the case thickness
-pil = 86; // this is the length of the pi board only
-pid = 57.4; // this is the width / depth of the pi board only
+pil = 85.5; // this is the length of the pi board only
+pid = 56; // this is the width / depth of the pi board only
 pih = board_thickness;
 sd_height = 10; // is how tall the sd card part sticking out is so if you increase it will cut more out for case
 
- translate([0,0,inhibitionzone_height + case_thickness+pin_space]) rotate([0,180,0]) intersection(){ // top of case
+ translate([0,0,inhibitionzone_height + case_thickness]) rotate([0,180,0]) intersection(){ // top of case
   rpi4_case();
   topSelector();
 }
