@@ -6,7 +6,7 @@ pin_space = 3;//2.2; // the min space that the throughhole components require un
 $fn = 100; // how detailed the circular components are (holes + mounts), not super important
 extension = 20; // extension to lengths so case can be subtractiveley created
 inhibitionzone_height = 12; // creates an inhibition zone for surface components
-case_thickness = 2; // sets the case thickness
+case_thickness = 2;//2; // sets the case thickness
 pil = 85.5; // this is the length of the pi board only
 pid = 56; // this is the width / depth of the pi board only
 pih = board_thickness;
@@ -19,7 +19,7 @@ fan_position_x = 43;
 fan_position_y = 7.9;
 fan_length = 40;
 
- translate([0,0,inhibitionzone_height + case_thickness]) rotate([0,180,0]) intersection(){ // top of case
+ translate([0,0,inhibitionzone_height + case_thickness + board_thickness]) rotate([0,180,0]) intersection(){ // top of case
   rpi4_case();
   topSelector();
 }
@@ -29,7 +29,7 @@ fan_length = 40;
   topSelector();
 }
 
-translate([-pil,pid+case_thickness*2+5,0]) rpi4_case();
+translate([-pil,pid+case_thickness*2+5]) rpi4_case();
 translate([extension+17.44,pid+case_thickness*2+5,0]) rpi4();
 
 module topSelector()
@@ -44,7 +44,7 @@ module topSelector()
 module rpi4_case()
 {
   difference(){ // subtracts the rpi4 model from a cube to generate the case
-    translate([-case_thickness,-case_thickness,-(board_thickness + case_thickness + pin_space)])
+    translate([-case_thickness,-case_thickness,-(case_thickness + pin_space)])
     cube([pil+(2*case_thickness),
       pid+(2*case_thickness),
       pin_space+inhibitionzone_height+board_thickness+(2*case_thickness)]); // the case itself
