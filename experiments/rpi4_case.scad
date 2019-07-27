@@ -76,7 +76,7 @@ module rpi4(){
       translate([55.0,50,0]) cube([7.95,7.8+extension,3.9]);                    // Micro HDMI0
       translate([41.2,50,0]) cube([7.95,7.8+extension,3.9]);                    // Micro HDMI1
       translate([37.4,34.1,0]) cube([2.5,22.15,5.4+extension]);                 // CSI camera connector
-      translate([26.9,43.55,0]) cube([9,14.95+extension,7.9]);                  // Audio jack
+      translate([26.9,43.55,0]) cube([8.5,14.95+extension,6.9]);                  // Audio jack
       translate([85,22.4,-(board_thickness+sd_height)]) cube([2.55+extension,11.11,sd_height]); // SD card (poking out)
       translate([fan_position_x,fan_position_y,0]) cylinder(extension,d=fan_pin_diam, center=false);                            // fan mount top-r
       translate([fan_position_x,fan_position_y+fan_length,0]) cylinder(extension,d=fan_pin_diam, center=false);                 // fan mount bot-r
