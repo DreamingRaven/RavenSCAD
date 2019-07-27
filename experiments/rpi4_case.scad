@@ -13,6 +13,12 @@ pid = 56; // this is the width / depth of the pi board only
 pih = board_thickness;
 sd_height = 10; // is how tall the sd card part sticking out is so if you increase it will cut more out for case
 
+// fan mount options
+fan_pin_diam = 3;
+fan_position_x = 43;
+fan_position_y = 7.9;
+fan_length = 40;
+
  translate([0,0,inhibitionzone_height + case_thickness]) rotate([0,180,0]) intersection(){ // top of case
   rpi4_case();
   topSelector();
@@ -72,6 +78,10 @@ module rpi4(){
       translate([37.4,34.1,0]) cube([2.5,22.15,5.4+extension]);                 // CSI camera connector
       translate([26.9,43.55,0]) cube([9,14.95+extension,7.9]);                  // Audio jack
       translate([85,22.4,-(board_thickness+sd_height)]) cube([2.55+extension,11.11,sd_height]); // SD card (poking out)
+      translate([fan_position_x,fan_position_y,0]) cylinder(extension,d=fan_pin_diam, center=false);                            // fan mount top-r
+      translate([fan_position_x,fan_position_y+fan_length,0]) cylinder(extension,d=fan_pin_diam, center=false);                 // fan mount bot-r
+      translate([fan_position_x+fan_length,fan_position_y,0]) cylinder(extension,d=fan_pin_diam, center=false);                 // fan mount top-l
+      translate([fan_position_x+fan_length,fan_position_y+fan_length,0]) cylinder(extension,d=fan_pin_diam, center=false);      // fan mount bot-l
 
       difference(){ // this creates the mount points around the mount holes esp the underneath ones
         union(){
