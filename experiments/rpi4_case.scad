@@ -2,16 +2,16 @@
 // please see licence in project root https://github.com/DreamingRaven/RavenSCAD/blob/master/LICENSE
 
 board_thickness = 1.5; // the space for the board itself only
-pin_space = 2.2;//2.2; // the min space that the throughhole components require underneath
+pin_space = 3;//2.2; // the min space that the throughhole components require underneath
 $fn = 100; // how detailed the circular components are (holes + mounts), not super important
 extension = 20; // extension to lengths so case can be subtractiveley created
 inhibitionzone_height = 12; // creates an inhibition zone for surface components
-mount_pin_height = 31; // this is the most awkward one of the set as it sets the mount point pin size
 case_thickness = 2; // sets the case thickness
 pil = 85.5; // this is the length of the pi board only
 pid = 56; // this is the width / depth of the pi board only
 pih = board_thickness;
-sd_height = 10; // is how tall the sd card part sticking out is so if you increase it will cut more out for case
+sd_height = pin_space + case_thickness + board_thickness; // is how tall the sd card part sticking out is so if you increase it will cut more out for case
+mount_pin_height = board_thickness + 2*case_thickness + pin_space + inhibitionzone_height;//31; // this is the most awkward one of the set as it sets the mount point pin size
 
 // fan mount options
 fan_pin_diam = 3;
@@ -44,7 +44,7 @@ module topSelector()
 module rpi4_case()
 {
   difference(){ // subtracts the rpi4 model from a cube to generate the case
-    translate([-case_thickness,-case_thickness,-(board_thickness + case_thickness)])
+    translate([-case_thickness,-case_thickness,-(board_thickness + case_thickness + pin_space)])
     cube([pil+(2*case_thickness),
       pid+(2*case_thickness),
       pin_space+inhibitionzone_height+board_thickness+(2*case_thickness)]); // the case itself
@@ -61,7 +61,7 @@ module rpi4(){
     translate([0,0,board_thickness]){ // two translations cancel out but make maths simpler before they do
       translate([0,0,-(board_thickness)]) // the translation which ^ cancels out
       {
-        cube([pil,pid,board_thickness]); // board + underpins
+        cube([pil,pid,board_thickness]); // the board only (not the underpins)
       }
       // these are the big surface level components
       translate([-(2.81+extension),2.15,0]) cube([21.3+extension,16.3,13.6]);   // Ethenrnet port
@@ -87,7 +87,7 @@ module rpi4(){
       difference(){ // this creates the mount points around the mount holes esp the underneath ones
         union(){
           translate([0,0,0]) cube([pil,pid,inhibitionzone_height]);                           // cpu
-          translate([0,0,-(2*board_thickness)]) cube([pil,pid,pin_space]); // underpins only
+          translate([0,0,-(pin_space+board_thickness)]) cube([pil,pid,pin_space]); // underpins only
         }
         mounts();
       }
@@ -98,7 +98,7 @@ module rpi4(){
 }
 
 module mounts(){
-  translate([1.25,1.25,(0.5*mount_pin_height)-(board_thickness+case_thickness)]){ // this is to move all the pins
+  translate([1.25,1.25,(0.5*mount_pin_height)-(board_thickness+case_thickness+pin_space)]){ // this is to move all the pins
           translate([22.2,2,0]) cylinder(mount_pin_height,d=5.9, center=true);     // mount top-r
           translate([22.2,51.1,0]) cylinder(mount_pin_height,d=5.9, center=true);  // mount bot-r
           translate([80.2,2,0]) cylinder(mount_pin_height,d=5.9, center=true);     // mount top-l
@@ -107,7 +107,7 @@ module mounts(){
 }
 
 module pins(){
-  translate([1.25,1.25,(0.5*mount_pin_height)-(board_thickness+case_thickness)]){ // this is to move all the pins
+  translate([1.25,1.25,(0.5*mount_pin_height)-(board_thickness+case_thickness+pin_space)]){ // this is to move all the pins
     translate([22.2,2,0]) cylinder(mount_pin_height,d=2.5, center=true);     // hole  top-r
     translate([22.2,51.1,0]) cylinder(mount_pin_height,d=2.5, center=true);  // hole  bot-r
     translate([80.2,2,0]) cylinder(mount_pin_height,d=2.5, center=true);     // hole  top-l
