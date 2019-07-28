@@ -11,13 +11,13 @@ pil = 85.5; // this is the length of the pi board only
 pid = 56; // this is the width / depth of the pi board only
 pih = board_thickness;
 sd_height = pin_space + case_thickness + board_thickness; // is how tall the sd card part sticking out is so if you increase it will cut more out for case
-mount_pin_height = board_thickness + 2*case_thickness + pin_space + inhibitionzone_height;//31; // this is the most awkward one of the set as it sets the mount point pin size
+mount_pin_height = 2*board_thickness + 2*case_thickness + pin_space + inhibitionzone_height;//31; // this is the most awkward one of the set as it sets the mount point pin size
 
 // fan mount options
 fan_pin_diam = 3;
-fan_position_x = 43;
-fan_position_y = 7.9;
-fan_length = 40;
+fan_position_x = 44;
+fan_position_y = 14;
+fan_length = 31;
 
  translate([0,0,inhibitionzone_height + case_thickness + board_thickness]) rotate([0,180,0]) intersection(){ // top of case
   rpi4_case();
@@ -82,7 +82,7 @@ module rpi4(){
       translate([fan_position_x,fan_position_y+fan_length,0]) cylinder(extension,d=fan_pin_diam, center=false);                 // fan mount bot-r
       translate([fan_position_x+fan_length,fan_position_y,0]) cylinder(extension,d=fan_pin_diam, center=false);                 // fan mount top-l
       translate([fan_position_x+fan_length,fan_position_y+fan_length,0]) cylinder(extension,d=fan_pin_diam, center=false);      // fan mount bot-l
-      translate([fan_position_x+0.5*fan_length,fan_position_y+0.5*fan_length,0]) cylinder(extension,d=fan_length-fan_pin_diam, center=false);      // fan air hole
+      translate([fan_position_x+0.5*fan_length,fan_position_y+0.5*fan_length,0]) cylinder(extension,d=fan_length+fan_pin_diam, center=false);      // fan air hole
 
       difference(){ // this creates the mount points around the mount holes esp the underneath ones
         union(){
