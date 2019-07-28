@@ -15,9 +15,9 @@ mount_pin_height = 2*board_thickness + 2*case_thickness + pin_space + inhibition
 
 // fan mount options
 fan_pin_diam = 3;
-fan_position_x = 44;
+fan_position_x = 44.3;
 fan_position_y = 14;
-fan_length = 31;
+fan_length = 31.5;
 
  translate([0,0,inhibitionzone_height + case_thickness + board_thickness]) rotate([0,180,0]) intersection(){ // top of case
   rpi4_case();
@@ -83,6 +83,15 @@ module rpi4(){
       translate([fan_position_x+fan_length,fan_position_y,0]) cylinder(extension,d=fan_pin_diam, center=false);                 // fan mount top-l
       translate([fan_position_x+fan_length,fan_position_y+fan_length,0]) cylinder(extension,d=fan_pin_diam, center=false);      // fan mount bot-l
       translate([fan_position_x+0.5*fan_length,fan_position_y+0.5*fan_length,0]) cylinder(extension,d=fan_length+fan_pin_diam, center=false);      // fan air hole
+      translate([53,7.8,0]){ scale([10,1,1]){
+
+        translate([0,0,-extension-board_thickness-pin_space])  cylinder(extension,d=5, center=false);      // under air hole
+        translate([0,10,-extension-board_thickness-pin_space]) cylinder(extension,d=5, center=false);      // under air hole
+        translate([0,20,-extension-board_thickness-pin_space]) cylinder(extension,d=5, center=false);      // under air hole
+        translate([0,30,-extension-board_thickness-pin_space]) cylinder(extension,d=5, center=false);      // under air hole
+        translate([0,40,-extension-board_thickness-pin_space]) cylinder(extension,d=5, center=false);      // under air hole
+      }
+      }
 
       difference(){ // this creates the mount points around the mount holes esp the underneath ones
         union(){
